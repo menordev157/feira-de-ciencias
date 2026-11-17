@@ -1,162 +1,1087 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#071a17" />
-  <meta name="description" content="Projeto da feira de ciências: materiais sustentáveis e redução do desperdício. Veja exemplos, ideias práticas e teste seus conhecimentos." />
-  <title>Menos Desperdício, Mais Futuro | Feira de Ciências</title>
-  <style>
-    :root { --bg:#071a17; --panel:#102a24; --panel2:#12362d; --mint:#bff27c; --aqua:#9fdcca; --cream:#f6f5e9; --muted:#b2c7bb; --line:rgba(214,245,213,.14); --radius:22px; }
-    *,*::before,*::after{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--cream);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
-    a{color:inherit;text-decoration:none}button{font:inherit}button:focus-visible,a:focus-visible{outline:3px solid var(--mint);outline-offset:4px}
-    .container{width:min(1120px,calc(100% - 40px));margin-inline:auto}
-    .site-header{position:sticky;top:0;z-index:10;background:rgba(7,26,23,.86);border-bottom:1px solid var(--line);backdrop-filter:blur(18px)}
-    .nav{display:flex;align-items:center;justify-content:space-between;min-height:74px;gap:20px}
-    .brand{display:flex;gap:10px;align-items:center;font-size:14px;font-weight:800;letter-spacing:.02em}
-    .brand-icon{width:37px;height:37px;border-radius:12px;background:var(--mint);color:var(--bg);display:grid;place-items:center;font-size:22px}
-    nav{display:flex;align-items:center;gap:28px;font-size:13px;color:var(--muted)}nav a:hover{color:var(--cream)}
-    .nav-cta{padding:11px 16px;border-radius:999px;border:1px solid rgba(191,242,124,.4);color:var(--mint)}
-    .hero{position:relative;overflow:hidden;padding:100px 0 83px;isolation:isolate}
-    .hero::before{content:"";position:absolute;top:-210px;right:-210px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(114,191,123,.17) 0%,rgba(10,55,45,.07) 45%,transparent 72%);z-index:-1}
-    .hero-grid{display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:52px}
-    .eyebrow{display:inline-flex;align-items:center;gap:10px;padding:9px 14px;border:1px solid rgba(191,242,124,.26);border-radius:999px;color:var(--mint);text-transform:uppercase;letter-spacing:.14em;font-size:10px;font-weight:800}
-    .dot{height:7px;width:7px;background:var(--mint);border-radius:50%;box-shadow:0 0 0 4px rgba(191,242,124,.12)}
-    h1,h2,h3,p{margin-top:0}h1{font-size:clamp(48px,6.3vw,92px);line-height:.98;letter-spacing:-.075em;margin:28px 0 26px;max-width:710px}h1 em{font-style:normal;color:var(--mint)}
-    .hero-text{color:var(--muted);font-size:clamp(16px,1.6vw,19px);line-height:1.72;max-width:545px}
-    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;border-radius:13px;padding:16px 22px;font-size:14px;font-weight:800;transition:transform .2s,background .2s}
-    .btn:hover{transform:translateY(-2px)}.btn-primary{background:var(--mint);color:var(--bg)}.btn-secondary{border:1px solid var(--line);color:var(--cream);background:rgba(255,255,255,.04)}
-    .hero-art{position:relative;min-height:500px;display:grid;place-items:center}
-    .orbit{position:absolute;width:min(100%,440px);aspect-ratio:1;border:1px solid rgba(191,242,124,.24);border-radius:50%}.orbit::before{content:"";position:absolute;inset:38px;border:1px dashed rgba(191,242,124,.20);border-radius:50%}
-    .planet{width:min(72%,325px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 30% 26%,#b6e8a4,#3c997a 55%,#1a5e4b 83%);box-shadow:inset -19px -23px 60px rgba(0,32,29,.32),0 0 110px rgba(123,222,152,.13);position:relative;overflow:hidden;transform:rotate(-17deg)}
-    .planet::before{content:"";position:absolute;width:270px;height:85px;background:#c4efab;border-radius:55% 45% 58% 35%;left:-45px;top:68px;transform:rotate(30deg);box-shadow:90px 100px 0 -21px #b9e6a1,155px 182px 0 -34px #d3f6b1}
-    .planet::after{content:"";position:absolute;width:145px;height:112px;background:#a7df9b;border-radius:27% 61% 38% 58%;right:-62px;top:135px;transform:rotate(-28deg)}
-    .float-card{position:absolute;background:rgba(21,55,46,.9);border:1px solid rgba(203,244,192,.22);border-radius:18px;padding:15px 18px;backdrop-filter:blur(14px);box-shadow:0 20px 50px rgba(0,0,0,.15)}
-    .float-card small{display:block;color:var(--muted);font-size:12px;margin-top:4px}.float-card strong{font-size:14px}.fc-one{top:75px;right:0}.fc-two{bottom:63px;left:0}.fc-symbol{display:inline-grid;place-items:center;width:34px;height:34px;background:rgba(191,242,124,.14);color:var(--mint);border-radius:10px;margin-right:8px;font-size:20px}
-    .statsbar{border-block:1px solid var(--line);background:rgba(255,255,255,.025)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:27px 0}.stat{display:flex;align-items:center;gap:15px}.stat .num{color:var(--mint);font-weight:900;font-size:35px;letter-spacing:-.06em}.stat .name{color:var(--muted);font-size:13px;line-height:1.5}
-    section.content{padding:110px 0}.section-kicker{color:var(--mint);font-weight:800;letter-spacing:.17em;text-transform:uppercase;font-size:11px;margin-bottom:17px}.section-header{max-width:720px;margin-bottom:38px}h2{font-size:clamp(35px,4.5vw,59px);line-height:1.06;letter-spacing:-.055em;margin-bottom:19px}h2 span{color:var(--mint)}.section-copy{color:var(--muted);font-size:16px;line-height:1.75}
-    .three-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.feature-card{min-height:280px;background:var(--panel);border:1px solid var(--line);padding:31px;border-radius:var(--radius);position:relative;overflow:hidden;transition:transform .2s,border-color .2s}.feature-card:hover{transform:translateY(-5px);border-color:rgba(191,242,124,.38)}.feature-icon{display:grid;place-items:center;width:58px;height:58px;background:rgba(191,242,124,.11);border-radius:17px;font-size:30px;margin-bottom:28px}.feature-card h3{font-size:24px;letter-spacing:-.035em;margin-bottom:12px}.feature-card p{color:var(--muted);font-size:14px;line-height:1.7;margin:0}.number-tag{position:absolute;right:27px;top:26px;color:rgba(191,242,124,.34);font-size:12px;font-weight:800;letter-spacing:.12em}
-    .material-section{background:#0c211c;border-block:1px solid var(--line)}.material-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:17px}.material{display:flex;gap:20px;align-items:flex-start;padding:27px;border-radius:18px;background:rgba(255,255,255,.035);border:1px solid var(--line)}.material-emoji{width:65px;height:65px;flex:0 0 auto;background:rgba(191,242,124,.11);display:grid;place-items:center;border-radius:15px;font-size:34px}.material h3{font-size:19px;margin:1px 0 8px}.material p{font-size:14px;line-height:1.7;color:var(--muted);margin:0}
-    .highlight{margin-top:24px;border:1px solid rgba(191,242,124,.3);border-radius:18px;padding:23px 27px;display:flex;gap:14px;align-items:flex-start;background:rgba(191,242,124,.055)}.highlight .symbol{color:var(--mint);font-weight:bold;font-size:22px}.highlight p{margin:0;font-size:14px;line-height:1.7;color:var(--muted)}.highlight b{color:var(--cream)}
-    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.step{padding:25px 23px;border-top:2px solid rgba(191,242,124,.65);background:rgba(255,255,255,.028);border-radius:0 0 18px 18px}.step-n{color:var(--mint);font-size:13px;font-weight:900}.step h3{font-size:17px;margin:18px 0 12px}.step p{color:var(--muted);font-size:13px;line-height:1.7;margin:0}
-    .quiz-shell{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;padding:55px;border-radius:28px;background:linear-gradient(130deg,#194436,#0f2b26);border:1px solid rgba(191,242,124,.16)}.quiz-shell .section-kicker{margin-bottom:15px}.quiz-shell h2{font-size:clamp(35px,4vw,52px)}.quiz-card{background:#f4f5e9;color:#112e27;border-radius:21px;padding:29px;min-height:326px}.quiz-progress{display:flex;align-items:center;justify-content:space-between;color:#48655c;font-size:12px;font-weight:800;margin-bottom:24px}.quiz-bar{height:5px;border-radius:99px;background:#dbe5d7;overflow:hidden;margin:0 0 25px}.quiz-fill{height:100%;width:33.33%;background:#4e9d64;transition:width .2s}.quiz-question{font-size:21px;line-height:1.35;font-weight:850;letter-spacing:-.04em;margin:0 0 19px}.answers{display:grid;gap:10px}.answer{width:100%;background:#fff;border:1px solid #d7e1d5;padding:13px 15px;text-align:left;border-radius:11px;font-size:13px;font-weight:650;color:#153c30;cursor:pointer;transition:background .2s,border-color .2s}.answer:hover:not(:disabled){background:#dff1d4}.answer:disabled{cursor:default}.answer.correct{background:#d7efcf;border-color:#449458}.answer.incorrect{background:#f8dfd8;border-color:#ce7460}.quiz-feedback{font-size:13px;line-height:1.5;margin-top:14px;font-weight:700;min-height:18px}.quiz-next{background:#133e30;color:#fff;border:0;padding:12px 16px;border-radius:10px;margin-top:13px;font-size:13px;cursor:pointer;font-weight:750}.quiz-next:disabled{opacity:.4;cursor:default}.quiz-result{font-size:19px;font-weight:800;line-height:1.5}.quiz-result strong{font-size:43px;color:#327d50}
-    footer{padding:35px 0 50px;border-top:1px solid var(--line)}.footer-inner{display:flex;gap:20px;justify-content:space-between;align-items:center}.footer-text{color:var(--muted);font-size:13px;line-height:1.6}.footer-link{font-size:13px;color:var(--mint)}
-    @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:5px}.hero{padding:76px 0 60px}.hero-art{min-height:370px;max-width:560px;width:100%;margin-inline:auto}.orbit{width:340px}.planet{width:255px}.fc-one{right:5%}.fc-two{left:4%}.three-grid{grid-template-columns:1fr}.feature-card{min-height:auto}.steps{grid-template-columns:repeat(2,1fr)}.quiz-shell{grid-template-columns:1fr;gap:25px}.quiz-shell h2{max-width:600px}section.content{padding:80px 0}}
-    @media(max-width:590px){.container{width:min(100% - 30px,1120px)}.nav{min-height:64px}.brand{font-size:12px}.brand-icon{width:34px;height:34px}.nav-links{display:none}nav{gap:8px}.nav-cta{font-size:11px;padding:10px 12px}h1{font-size:clamp(45px,12.2vw,72px)}.hero-text{font-size:15px}.hero-art{min-height:323px}.orbit{width:280px}.planet{width:207px}.float-card{padding:10px 12px}.fc-one{top:38px;right:0}.fc-two{bottom:37px;left:0}.float-card strong{font-size:11px}.float-card small{font-size:10px}.fc-symbol{width:26px;height:26px;font-size:15px}.stats{grid-template-columns:1fr;gap:15px;padding:22px 0}.stat .num{font-size:30px}.stat .name{font-size:12px}.material-grid,.steps{grid-template-columns:1fr}.material{padding:22px;gap:14px}.material-emoji{width:52px;height:52px;font-size:27px}.quiz-shell{padding:25px 16px;border-radius:20px}.quiz-card{padding:23px 17px}.footer-inner{flex-direction:column;align-items:flex-start}.btn{padding:14px 16px}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d0a">
+  <meta name="description" content="ECO FUTURE: sustentabilidade, inovação, economia circular e transformação ambiental.">
+  <title>ECO FUTURE | Sustentabilidade e Inovação</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="#inicio" aria-label="Início"><span class="brand-icon" aria-hidden="true">♻</span><span>FUTURO SUSTENTÁVEL</span></a>
-      <nav aria-label="Navegação principal"><div class="nav-links"><a href="#conceitos">Conceitos</a> &nbsp;&nbsp; <a href="#materiais">Materiais</a> &nbsp;&nbsp; <a href="#acoes">Na prática</a></div><a class="nav-cta" href="#quiz">Fazer o quiz ↗</a></nav>
+
+<!-- CAPA INICIAL -->
+<section class="intro-screen" id="introScreen">
+  <div class="intro-glow"></div>
+  <div class="intro-orbit orbit-a"></div>
+  <div class="intro-orbit orbit-b"></div>
+
+  <div class="intro-content">
+    <span class="eyebrow">FEIRA ESCOLAR • EDUCAÇÃO AMBIENTAL</span>
+
+    <div class="brand-symbol intro-symbol">
+      <svg viewBox="0 0 120 120" aria-label="Símbolo de renovação">
+        <path d="M47 15h17l9 15-9 5-7-11h-8l-7 12-9-5 14-16z"/>
+        <path d="M82 34l9 15-8 14-9-5 6-10-7-12 9-2z"/>
+        <path d="M87 72l-8 15H61v-10h12l6-11 8 6z"/>
+        <path d="M55 91H38L29 76l9-5 7 11h10v9z"/>
+        <path d="M23 68l-9-15 8-14 9 5-6 10 7 12-9 2z"/>
+        <path d="M33 31l8 5-6 10-8 13-9-5 15-23z"/>
+      </svg>
     </div>
+
+    <h1>ECO <span>FUTURE</span></h1>
+
+    <p class="intro-slogan">SUSTENTABILIDADE • INOVAÇÃO • FUTURO</p>
+
+    <h2>O futuro também<br>é uma <span>escolha.</span></h2>
+
+    <p class="intro-description">
+      Descubra como pequenas atitudes, inovação e consciência ambiental
+      podem transformar resíduos em soluções e construir um futuro melhor.
+    </p>
+
+    <button class="button button-primary enter-button" id="enterButton">
+      ENTRAR NO SITE <span>↗</span>
+    </button>
+
+    <small>PEQUENAS ATITUDES. GRANDES TRANSFORMAÇÕES.</small>
+  </div>
+</section>
+
+<!-- SITE -->
+<div class="site hidden" id="site">
+
+  <!-- CABEÇALHO -->
+  <header class="header">
+    <a href="#" class="brand" data-page="inicio">
+      <svg class="brand-symbol small-symbol" viewBox="0 0 120 120">
+        <path d="M47 15h17l9 15-9 5-7-11h-8l-7 12-9-5 14-16z"/>
+        <path d="M82 34l9 15-8 14-9-5 6-10-7-12 9-2z"/>
+        <path d="M87 72l-8 15H61v-10h12l6-11 8 6z"/>
+        <path d="M55 91H38L29 76l9-5 7 11h10v9z"/>
+        <path d="M23 68l-9-15 8-14 9 5-6 10 7 12-9 2z"/>
+        <path d="M33 31l8 5-6 10-8 13-9-5 15-23z"/>
+      </svg>
+      <span>ECO <strong>FUTURE</strong></span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+
+    <nav class="navigation" id="navigation">
+      <button class="nav-link active" data-page="inicio">Início</button>
+      <button class="nav-link" data-page="projeto7">Projeto 7</button>
+      <button class="nav-link" data-page="projeto10">Projeto 10</button>
+      <button class="nav-link" data-page="aprenda">Aprenda</button>
+      <button class="nav-link" data-page="quiz">Quiz</button>
+    </nav>
   </header>
+
   <main>
-    <section class="hero" id="inicio">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow"><span class="dot"></span> Projeto 10 · Feira de Ciências</div>
-          <h1>Menos desperdício.<br><em>Mais futuro.</em></h1>
-          <p class="hero-text">Pequenas escolhas de materiais podem transformar nossa relação com o planeta. Descubra como utilizar recursos de forma inteligente, reduzir resíduos e criar hábitos mais sustentáveis.</p>
-          <div class="hero-actions"><a class="btn btn-primary" href="#conceitos">Explorar o projeto <span aria-hidden="true">↗</span></a><a class="btn btn-secondary" href="#quiz">Testar conhecimentos <span aria-hidden="true">→</span></a></div>
+
+    <!-- PÁGINA INICIAL -->
+    <section class="page active" id="inicio">
+
+      <div class="hero">
+        <div class="hero-content">
+          <span class="eyebrow">
+            <span class="status-dot"></span>
+            CONHECIMENTO QUE GERA MUDANÇA
+          </span>
+
+          <h2>Transformando<br>resíduos em <span>soluções.</span></h2>
+
+          <p>
+            A sustentabilidade vai além da reciclagem. Ela envolve repensar
+            a maneira como produzimos, consumimos, reutilizamos e cuidamos
+            dos recursos naturais.
+          </p>
+
+          <div class="hero-buttons">
+            <button class="button button-primary" data-go="projeto7">
+              EXPLORAR OS PROJETOS ↓
+            </button>
+            <button class="button button-outline" data-go="aprenda">
+              APRENDER MAIS
+            </button>
+          </div>
+
+          <div class="hero-note">
+            <span></span> APRENDA • REFLITA • TRANSFORME
+          </div>
         </div>
-        <div class="hero-art" aria-hidden="true">
-          <div class="orbit"></div><div class="planet"></div>
-          <div class="float-card fc-one"><span class="fc-symbol">↺</span><strong>Economia circular</strong><small>Materiais em novos ciclos</small></div>
-          <div class="float-card fc-two"><span class="fc-symbol">✦</span><strong>Escolhas conscientes</strong><small>Menos descarte, mais valor</small></div>
+
+        <div class="hero-art">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="hero-glow"></div>
+
+          <svg class="hero-recycle" viewBox="0 0 120 120">
+            <path d="M47 15h17l9 15-9 5-7-11h-8l-7 12-9-5 14-16z"/>
+            <path d="M82 34l9 15-8 14-9-5 6-10-7-12 9-2z"/>
+            <path d="M87 72l-8 15H61v-10h12l6-11 8 6z"/>
+            <path d="M55 91H38L29 76l9-5 7 11h10v9z"/>
+            <path d="M23 68l-9-15 8-14 9 5-6 10 7 12-9 2z"/>
+            <path d="M33 31l8 5-6 10-8 13-9-5 15-23z"/>
+          </svg>
+
+          <div class="art-label label-top">MENOS DESPERDÍCIO</div>
+          <div class="art-label label-bottom">MAIS POSSIBILIDADES</div>
+          <div class="art-center">∞ <small>CICLO CONSCIENTE</small></div>
         </div>
       </div>
+
+      <div class="impact-strip">
+        <div><strong>REDUZIR</strong><span>Evitar desperdícios</span></div>
+        <div><strong>REUTILIZAR</strong><span>Dar novos usos</span></div>
+        <div><strong>RECICLAR</strong><span>Transformar materiais</span></div>
+        <div><strong>INOVAR</strong><span>Criar soluções</span></div>
+      </div>
+
+      <div class="section-heading">
+        <span class="eyebrow">CONHEÇA NOSSA PROPOSTA</span>
+        <h2>Dois projetos.<br><span>Um objetivo em comum.</span></h2>
+        <p>
+          Os Projetos 7 e 10 demonstram como a sustentabilidade pode
+          sair da teoria e se transformar em ações práticas.
+        </p>
+      </div>
+
+      <div class="card-grid two-columns">
+        <article class="info-card project-preview">
+          <span class="card-number">PROJETO 01</span>
+          <div class="card-icon">♻</div>
+          <h3>Produto Sustentável</h3>
+          <p>
+            Desenvolver um produto útil a partir de materiais descartados,
+            avaliando sua funcionalidade, segurança, custo e impacto ambiental.
+          </p>
+          <button class="text-button" data-go="projeto7">CONHECER PROJETO →</button>
+        </article>
+
+        <article class="info-card project-preview">
+          <span class="card-number">PROJETO 02</span>
+          <div class="card-icon">🌱</div>
+          <h3>Empresa Sustentável</h3>
+          <p>
+            Criar um plano de sustentabilidade empresarial com economia circular,
+            inovação tecnológica e melhoria do desempenho ambiental.
+          </p>
+          <button class="text-button" data-go="projeto10">CONHECER PROJETO →</button>
+        </article>
+      </div>
+
+      <div class="section-heading">
+        <span class="eyebrow">O QUE VOCÊ VAI ENCONTRAR</span>
+        <h2>Conhecimento para <span>transformar.</span></h2>
+      </div>
+
+      <div class="card-grid three-columns">
+        <article class="mini-card">
+          <span>01</span>
+          <h3>Informação</h3>
+          <p>Entenda os problemas ambientais e suas possíveis soluções.</p>
+        </article>
+        <article class="mini-card">
+          <span>02</span>
+          <h3>Inovação</h3>
+          <p>Conheça ideias que transformam materiais e processos.</p>
+        </article>
+        <article class="mini-card">
+          <span>03</span>
+          <h3>Consciência</h3>
+          <p>Descubra como suas escolhas podem fazer diferença.</p>
+        </article>
+      </div>
+
+      <div class="quote-panel">
+        <span class="eyebrow">NOSSA MENSAGEM</span>
+        <h2>O futuro não se descarta. <span>Se constrói.</span></h2>
+        <p>Transformar o presente é o primeiro passo para mudar o amanhã.</p>
+      </div>
+
     </section>
-    <div class="statsbar"><div class="container stats"><div class="stat"><div class="num">01</div><div class="name">Repense o consumo<br>antes de comprar</div></div><div class="stat"><div class="num">02</div><div class="name">Aproveite materiais<br>por mais tempo</div></div><div class="stat"><div class="num">03</div><div class="name">Separe e destine<br>os resíduos corretamente</div></div></div></div>
-    <section class="content" id="conceitos"><div class="container"><div class="section-header"><div class="section-kicker">01 / Entenda o conceito</div><h2>Sustentabilidade começa <span>antes do lixo.</span></h2><p class="section-copy">O melhor caminho é evitar desperdícios desde a escolha de um produto. Três atitudes ajudam a diminuir o consumo desnecessário de recursos.</p></div><div class="three-grid">
-      <article class="feature-card"><span class="number-tag">01 / 03</span><div class="feature-icon" aria-hidden="true">↓</div><h3>Reduzir</h3><p>Consumir apenas o necessário, evitar embalagens excessivas e planejar compras para prevenir sobras.</p></article>
-      <article class="feature-card"><span class="number-tag">02 / 03</span><div class="feature-icon" aria-hidden="true">↻</div><h3>Reutilizar</h3><p>Dar uma segunda função a potes, caixas, embalagens e outros objetos antes de descartá-los.</p></article>
-      <article class="feature-card"><span class="number-tag">03 / 03</span><div class="feature-icon" aria-hidden="true">♻</div><h3>Reciclar</h3><p>Separar materiais recicláveis e encaminhá-los a sistemas de coleta e processamento adequados.</p></article>
-    </div></div></section>
-    <section class="content material-section" id="materiais"><div class="container"><div class="section-header"><div class="section-kicker">02 / Materiais e possibilidades</div><h2>Boas escolhas fazem <span>a diferença.</span></h2><p class="section-copy">Não existe material perfeito para todas as situações. Durabilidade, origem, possibilidade de reuso e descarte correto também precisam entrar na decisão.</p></div>
-      <div class="material-grid">
-        <article class="material"><div class="material-emoji" aria-hidden="true">📦</div><div><h3>Papelão reaproveitado</h3><p>Caixas usadas podem virar organizadores, protótipos e estruturas de maquetes, evitando a compra de novos materiais.</p></div></article>
-        <article class="material"><div class="material-emoji" aria-hidden="true">🫙</div><div><h3>Vidro reutilizável</h3><p>Frascos e recipientes podem ser usados várias vezes quando estão em boas condições e são adequados ao uso.</p></div></article>
-        <article class="material"><div class="material-emoji" aria-hidden="true">🥫</div><div><h3>Alumínio</h3><p>Embalagens de alumínio podem ser recicladas por meio da coleta adequada, reduzindo a necessidade de matéria-prima virgem.</p></div></article>
-        <article class="material"><div class="material-emoji" aria-hidden="true">🌳</div><div><h3>Madeira de origem responsável</h3><p>Priorizar madeira reaproveitada ou de origem rastreável ajuda a fazer escolhas mais responsáveis.</p></div></article>
+
+    <!-- PROJETO 7 -->
+    <section class="page" id="projeto7">
+
+      <div class="page-heading">
+        <span class="eyebrow">01 • REUTILIZAÇÃO E INOVAÇÃO</span>
+        <h2>Projeto 7: <span>Produto Sustentável</span></h2>
+        <p>
+          Desenvolvimento de um Produto Sustentável a partir de Materiais
+          Descartados.
+        </p>
       </div>
-      <div class="highlight"><div class="symbol" aria-hidden="true">!</div><p><b>Importante:</b> ser “reciclável” não significa que um material será reciclado na prática. Isso depende de coleta, separação e infraestrutura disponíveis na região.</p></div>
-    </div></section>
-    <section class="content" id="acoes"><div class="container"><div class="section-header"><div class="section-kicker">03 / Ações reais</div><h2>O que podemos mudar <span>na escola?</span></h2><p class="section-copy">Algumas mudanças simples ajudam a aplicar o tema no dia a dia da turma, sem depender de grandes investimentos.</p></div><div class="steps">
-      <article class="step"><span class="step-n">PASSO 01</span><h3>Planejar materiais</h3><p>Listar o necessário para trabalhos e comprar somente o que realmente será usado.</p></article>
-      <article class="step"><span class="step-n">PASSO 02</span><h3>Reaproveitar sobras</h3><p>Guardar recortes, caixas e outros itens úteis para futuras atividades.</p></article>
-      <article class="step"><span class="step-n">PASSO 03</span><h3>Separar resíduos</h3><p>Usar recipientes identificados e consultar as regras de coleta local.</p></article>
-      <article class="step"><span class="step-n">PASSO 04</span><h3>Compartilhar ideias</h3><p>Mostrar resultados e incentivar outras pessoas a evitar desperdício.</p></article>
-    </div></div></section>
-    <section class="content" id="quiz" style="padding-top:0"><div class="container"><div class="quiz-shell"><div><div class="section-kicker">04 / Hora de participar</div><h2>Você faria a <span>escolha certa?</span></h2><p class="section-copy">São três perguntas rápidas. Teste o que aprendeu sobre materiais sustentáveis e redução de resíduos.</p></div><div class="quiz-card" aria-live="polite"><div class="quiz-progress"><span id="quiz-progress">PERGUNTA 1 DE 3</span><span id="quiz-score">0 ACERTOS</span></div><div class="quiz-bar"><div class="quiz-fill" id="quiz-fill"></div></div><div id="quiz-body"><p class="quiz-question" id="quiz-question"></p><div class="answers" id="quiz-answers"></div><div class="quiz-feedback" id="quiz-feedback"></div><button type="button" class="quiz-next" id="quiz-next" disabled>Próxima pergunta →</button></div></div></div></div></section>
+
+      <div class="problem-box">
+        <span class="eyebrow">SITUAÇÃO-PROBLEMA</span>
+        <h3>Um material descartado pode se transformar em algo útil?</h3>
+        <p>
+          Muitas comunidades e pequenas empresas possuem resíduos que poderiam
+          ganhar uma nova função. O desafio é identificar quais materiais
+          apresentam características adequadas para serem reaproveitados,
+          sem transferir o problema ambiental para outra etapa.
+        </p>
+      </div>
+
+      <div class="section-heading left-heading">
+        <span class="eyebrow">OBJETIVO DO PROJETO</span>
+        <h2>Transformar materiais em <span>soluções.</span></h2>
+      </div>
+
+      <div class="content-block">
+        <p>
+          O objetivo é desenvolver e avaliar um protótipo utilizando materiais
+          reaproveitados ou reciclados, considerando suas propriedades,
+          processo de fabricação, utilidade e potencial de redução dos
+          impactos ambientais.
+        </p>
+      </div>
+
+      <div class="section-heading left-heading">
+        <span class="eyebrow">ETAPAS DO DESENVOLVIMENTO</span>
+        <h2>Da pesquisa ao <span>protótipo.</span></h2>
+      </div>
+
+      <div class="steps-list">
+        <article class="step-card">
+          <span class="step-number">01</span>
+          <div>
+            <h3>Identificação dos materiais</h3>
+            <p>
+              Identificar quais resíduos estão disponíveis, de onde vieram,
+              em qual quantidade se encontram e se estão em condições
+              adequadas de reaproveitamento.
+            </p>
+          </div>
+        </article>
+
+        <article class="step-card">
+          <span class="step-number">02</span>
+          <div>
+            <h3>Pesquisa das propriedades</h3>
+            <p>
+              Analisar características físicas e funcionais dos materiais,
+              como resistência, flexibilidade, conservação e possibilidade
+              de utilização.
+            </p>
+          </div>
+        </article>
+
+        <article class="step-card">
+          <span class="step-number">03</span>
+          <div>
+            <h3>Planejamento do produto</h3>
+            <p>
+              Definir a finalidade do produto, o público que irá utilizá-lo,
+              as ferramentas necessárias, o tempo de produção e os critérios
+              de segurança e qualidade.
+            </p>
+          </div>
+        </article>
+
+        <article class="step-card">
+          <span class="step-number">04</span>
+          <div>
+            <h3>Construção do protótipo</h3>
+            <p>
+              Produzir uma primeira versão do produto e registrar as etapas
+              de fabricação, os materiais utilizados e as dificuldades
+              encontradas.
+            </p>
+          </div>
+        </article>
+
+        <article class="step-card">
+          <span class="step-number">05</span>
+          <div>
+            <h3>Testes e aperfeiçoamento</h3>
+            <p>
+              Verificar se o produto cumpre sua finalidade, se apresenta
+              resistência adequada e quais melhorias podem ser realizadas.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <div class="section-heading left-heading">
+        <span class="eyebrow">EXEMPLOS DE APLICAÇÃO</span>
+        <h2>O que pode ser <span>criado?</span></h2>
+      </div>
+
+      <div class="card-grid three-columns">
+        <article class="info-card">
+          <div class="card-icon">📦</div>
+          <h3>Organizador escolar</h3>
+          <p>Produzido com papelão reaproveitado em boas condições.</p>
+        </article>
+        <article class="info-card">
+          <div class="card-icon">🪑</div>
+          <h3>Mobiliário simples</h3>
+          <p>Produzido com materiais recuperados apropriados para essa finalidade.</p>
+        </article>
+        <article class="info-card">
+          <div class="card-icon">🧩</div>
+          <h3>Produto educativo</h3>
+          <p>Desenvolvido com materiais recicláveis para ensinar e conscientizar.</p>
+        </article>
+      </div>
+
+      <div class="section-heading left-heading">
+        <span class="eyebrow">ANÁLISE TÉCNICA</span>
+        <h2>Como avaliar o <span>resultado?</span></h2>
+        <p>Não basta o produto parecer sustentável: ele precisa ser analisado.</p>
+      </div>
+
+      <div class="criteria-grid">
+        <article><b>Funcionalidade</b><span>O produto cumpre sua finalidade?</span></article>
+        <article><b>Resistência</b><span>Suporta as condições de utilização?</span></article>
+        <article><b>Segurança</b><span>Pode ser utilizado sem riscos indevidos?</span></article>
+        <article><b>Custo</b><span>O custo de produção é compatível?</span></article>
+        <article><b>Durabilidade</b><span>Qual é a vida útil esperada?</span></article>
+        <article><b>Sustentabilidade</b><span>Evita impactos ou apenas os transfere?</span></article>
+        <article><b>Destino final</b><span>Os materiais poderão ser reutilizados ou reciclados?</span></article>
+      </div>
+
+      <div class="info-panel">
+        <span class="eyebrow">DADOS IMPORTANTES DA PRODUÇÃO</span>
+        <h3>O que deve ser registrado?</h3>
+        <ul class="check-list">
+          <li>Tipo e origem dos materiais.</li>
+          <li>Quantidade disponível e condições de conservação.</li>
+          <li>Ferramentas e equipamentos necessários.</li>
+          <li>Tempo estimado de produção.</li>
+          <li>Custo da mão de obra e dos materiais complementares.</li>
+          <li>Necessidades do público que utilizará o produto.</li>
+          <li>Requisitos de segurança e qualidade.</li>
+          <li>Alternativas de manutenção e destinação final.</li>
+        </ul>
+      </div>
+
+      <div class="warning-panel">
+        <strong>ATENÇÃO À SEGURANÇA</strong>
+        <p>
+          Não utilize resíduos contaminados ou materiais cuja composição
+          e segurança não possam ser verificadas. A escolha dos materiais
+          deve considerar a finalidade e as condições de utilização do produto.
+        </p>
+      </div>
+
+      <div class="result-banner">
+        <span class="eyebrow">RESULTADO ESPERADO</span>
+        <h3>Uma ideia desenvolvida, testada e documentada.</h3>
+        <p>
+          O resultado deve incluir protótipo, ficha técnica, registro dos testes,
+          estimativa de custos e relatório sobre viabilidade técnica e ambiental.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- PROJETO 10 -->
+    <section class="page" id="projeto10">
+
+      <div class="page-heading">
+        <span class="eyebrow">02 • GESTÃO E INOVAÇÃO</span>
+        <h2>Projeto 10: <span>Empresa Sustentável</span></h2>
+        <p>
+          Plano Integrado de Sustentabilidade para uma Empresa:
+          Inovação, Economia Circular e Desempenho Ambiental.
+        </p>
+      </div>
+
+      <div class="problem-box">
+        <span class="eyebrow">SITUAÇÃO-PROBLEMA</span>
+        <h3>Como uma empresa pode produzir melhor, desperdiçar menos e cuidar do planeta?</h3>
+        <p>
+          Uma empresa de pequeno ou médio porte pode enfrentar aumento dos
+          custos operacionais, desperdício de matérias-primas, consumo elevado
+          de água e energia e dificuldades para destinar seus resíduos.
+        </p>
+        <p>
+          Com orçamento limitado, ela precisa pesquisar e comparar alternativas
+          antes de escolher quais iniciativas devem ser implementadas.
+        </p>
+      </div>
+
+      <div class="section-heading left-heading">
+        <span class="eyebrow">OBJETIVO DO PROJETO</span>
+        <h2>Planejar uma empresa <span>mais eficiente.</span></h2>
+        <p>
+          Desenvolver um plano integrado baseado em dados operacionais,
+          identificando oportunidades de inovação, redução de desperdícios
+          e uso eficiente dos recursos.
+        </p>
+      </div>
+
+      <div class="section-heading left-heading">
+        <span class="eyebrow">QUATRO PROPOSTAS DE INTERVENÇÃO</span>
+        <h2>Quais soluções podem ser <span>aplicadas?</span></h2>
+      </div>
+
+      <div class="card-grid two-columns">
+        <article class="info-card">
+          <span class="card-number">PROPOSTA 01</span>
+          <div class="card-icon">♻</div>
+          <h3>Economia circular</h3>
+          <p>
+            Identificar resíduos que possam ser reduzidos, reutilizados
+            ou encaminhados para recuperação por processos adequados.
+          </p>
+          <p class="example"><b>Exemplo:</b> reaproveitar sobras de materiais no próprio processo produtivo.</p>
+        </article>
+
+        <article class="info-card">
+          <span class="card-number">PROPOSTA 02</span>
+          <div class="card-icon">🌿</div>
+          <h3>Materiais sustentáveis</h3>
+          <p>
+            Investigar a substituição de materiais convencionais por
+            alternativas adequadas em durabilidade, origem, custo,
+            segurança e destinação final.
+          </p>
+          <p class="example"><b>Exemplo:</b> avaliar embalagens reutilizáveis ou recicláveis.</p>
+        </article>
+
+        <article class="info-card">
+          <span class="card-number">PROPOSTA 03</span>
+          <div class="card-icon">💧</div>
+          <h3>Solução ambiental</h3>
+          <p>
+            Selecionar uma iniciativa para melhorar a gestão da água,
+            dos resíduos, da energia ou de outro aspecto ambiental.
+          </p>
+          <p class="example"><b>Exemplo:</b> identificar vazamentos e reduzir o desperdício de água.</p>
+        </article>
+
+        <article class="info-card">
+          <span class="card-number">PROPOSTA 04</span>
+          <div class="card-icon">💻</div>
+          <h3>Inovação tecnológica</h3>
+          <p>
+            Propor ferramentas digitais, sistemas de monitoramento
+            ou melhorias de processos para acompanhar indicadores.
+          </p>
+          <p class="example"><b>Exemplo:</b> utilizar planilhas e sistemas para acompanhar consumo de energia.</p>
+        </article>
+      </div>
+
+      <div class="section-heading left-heading">
+        <span class="eyebrow">DIAGNÓSTICO EMPRESARIAL</span>
+        <h2>Os cinco grupos de <span>dados.</span></h2>
+        <p>
+          Antes de propor mudanças, é necessário conhecer o funcionamento
+          da empresa e reunir informações.
+        </p>
+      </div>
+
+      <div class="data-list">
+        <details open>
+          <summary>A — Dados operacionais <span>+</span></summary>
+          <ul>
+            <li>Tipo de atividade da empresa.</li>
+            <li>Principais processos produtivos ou serviços prestados.</li>
+            <li>Quantidade de produtos ou serviços por período.</li>
+            <li>Matérias-primas e materiais utilizados.</li>
+            <li>Equipamentos e infraestrutura existentes.</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>B — Dados ambientais <span>+</span></summary>
+          <ul>
+            <li>Consumo de água.</li>
+            <li>Consumo de energia.</li>
+            <li>Quantidade e tipo de resíduos gerados.</li>
+            <li>Armazenamento e destinação dos resíduos.</li>
+            <li>Materiais recicláveis ou reutilizáveis.</li>
+            <li>Possíveis fontes de poluição e desperdício.</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>C — Dados econômicos <span>+</span></summary>
+          <ul>
+            <li>Custos de matérias-primas.</li>
+            <li>Gastos com água e energia.</li>
+            <li>Custos de coleta e destinação de resíduos.</li>
+            <li>Custos estimados de manutenção.</li>
+            <li>Investimentos necessários para cada alternativa.</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>D — Dados de inovação <span>+</span></summary>
+          <ul>
+            <li>Tecnologias disponíveis.</li>
+            <li>Possibilidade de automação e monitoramento.</li>
+            <li>Materiais alternativos.</li>
+            <li>Oportunidades de digitalização.</li>
+            <li>Processos que podem ser redesenhados.</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>E — Dados de gestão <span>+</span></summary>
+          <ul>
+            <li>Metas empresariais.</li>
+            <li>Recursos humanos disponíveis.</li>
+            <li>Restrições orçamentárias.</li>
+            <li>Requisitos legais e normativos.</li>
+            <li>Indicadores já utilizados pela organização.</li>
+            <li>Possíveis parceiros e fornecedores.</li>
+          </ul>
+        </details>
+      </div>
+
+      <div class="info-panel">
+        <span class="eyebrow">COMO ORGANIZAR A PESQUISA</span>
+        <h3>O que apresentar em cada proposta?</h3>
+        <ul class="check-list">
+          <li>Descrição do problema identificado.</li>
+          <li>Dados que justificam a intervenção.</li>
+          <li>Solução proposta.</li>
+          <li>Recursos necessários.</li>
+          <li>Investimento inicial estimado.</li>
+          <li>Custos de operação e manutenção.</li>
+          <li>Benefícios esperados.</li>
+          <li>Riscos e limitações.</li>
+          <li>Indicadores de acompanhamento.</li>
+          <li>Cronograma de implantação.</li>
+        </ul>
+      </div>
+
+      <div class="section-heading left-heading">
+        <span class="eyebrow">ANÁLISE MULTICRITÉRIO</span>
+        <h2>Como escolher as <span>melhores propostas?</span></h2>
+        <p>
+          O Projeto 10 utiliza critérios com pesos diferentes para comparar
+          as alternativas de forma organizada.
+        </p>
+      </div>
+
+      <div class="weight-table">
+        <div class="weight-row">
+          <span>Impacto ambiental potencial</span>
+          <b>30%</b>
+          <div class="weight-track"><i style="width:30%"></i></div>
+        </div>
+        <div class="weight-row">
+          <span>Viabilidade econômica</span>
+          <b>25%</b>
+          <div class="weight-track"><i style="width:25%"></i></div>
+        </div>
+        <div class="weight-row">
+          <span>Viabilidade técnica</span>
+          <b>20%</b>
+          <div class="weight-track"><i style="width:20%"></i></div>
+        </div>
+        <div class="weight-row">
+          <span>Viabilidade operacional</span>
+          <b>15%</b>
+          <div class="weight-track"><i style="width:15%"></i></div>
+        </div>
+        <div class="weight-row">
+          <span>Potencial de inovação</span>
+          <b>10%</b>
+          <div class="weight-track"><i style="width:10%"></i></div>
+        </div>
+      </div>
+
+      <p class="fine-print">
+        Os pesos são sugestões do projeto. Podem ser ajustados quando houver
+        justificativa. A pontuação não substitui a análise de riscos,
+        exigências legais e limitações financeiras.
+      </p>
+
+      <div class="info-panel">
+        <span class="eyebrow">COMO FUNCIONA A PONTUAÇÃO?</span>
+        <h3>Notas de 1 a 5</h3>
+        <p>
+          Cada alternativa recebe uma nota de 1 a 5 para cada critério.
+          Depois, a nota é multiplicada pelo peso correspondente.
+          A soma dos resultados gera a pontuação ponderada.
+        </p>
+
+        <div class="formula">
+          P = Σ (peso × nota)
+        </div>
+
+        <p>
+          Quanto maior a pontuação, mais bem avaliada é a alternativa
+          segundo os critérios escolhidos.
+        </p>
+
+        <h3>Exemplo hipotético do projeto</h3>
+        <div class="example-table">
+          <div><span>Impacto ambiental</span><b>0,30 × 5 = 1,50</b></div>
+          <div><span>Viabilidade econômica</span><b>0,25 × 4 = 1,00</b></div>
+          <div><span>Viabilidade técnica</span><b>0,20 × 4 = 0,80</b></div>
+          <div><span>Viabilidade operacional</span><b>0,15 × 3 = 0,45</b></div>
+          <div><span>Potencial de inovação</span><b>0,10 × 5 = 0,50</b></div>
+        </div>
+        <div class="score-result">RESULTADO: 4,25 DE 5</div>
+        <p class="fine-print">
+          Esse valor é apenas um exemplo matemático, não representa
+          uma empresa real nem uma medição realizada.
+        </p>
+      </div>
+
+      <div class="section-heading left-heading">
+        <span class="eyebrow">ANÁLISE ECONÔMICA</span>
+        <h2>Os custos e o retorno <span>do investimento.</span></h2>
+      </div>
+
+      <div class="formula-grid">
+        <article class="formula-card">
+          <span class="eyebrow">ECONOMIA LÍQUIDA</span>
+          <h3>E<sub>L</sub> = E<sub>B</sub> − C<sub>A</sub></h3>
+          <p>
+            Benefício financeiro bruto menos os custos adicionais
+            de operação e manutenção no período.
+          </p>
+        </article>
+
+        <article class="formula-card">
+          <span class="eyebrow">PRAZO DE RETORNO</span>
+          <h3>T<sub>R</sub> = I<sub>0</sub> ÷ E<sub>L</sub></h3>
+          <p>
+            Investimento inicial dividido pela economia líquida por período,
+            quando ela for positiva e relativamente estável.
+          </p>
+        </article>
+      </div>
+
+      <div class="info-panel">
+        <h3>Entenda as siglas</h3>
+        <ul class="check-list">
+          <li><b>E L:</b> economia líquida estimada.</li>
+          <li><b>E B:</b> economia bruta ou benefício financeiro mensurável.</li>
+          <li><b>C A:</b> custos adicionais de operação e manutenção.</li>
+          <li><b>T R:</b> prazo simples de retorno.</li>
+          <li><b>I 0:</b> investimento inicial.</li>
+        </ul>
+        <p class="fine-print">
+          A fórmula de retorno simples exige economia líquida positiva
+          e relativamente estável. Situações com valores variáveis
+          precisam de uma análise financeira mais detalhada.
+        </p>
+      </div>
+
+      <div class="section-heading left-heading">
+        <span class="eyebrow">PLANO DE IMPLANTAÇÃO</span>
+        <h2>Organizando as <span>mudanças.</span></h2>
+      </div>
+
+      <div class="timeline">
+        <article>
+          <span>CURTO PRAZO</span>
+          <h3>Ações iniciais</h3>
+          <p>Medidas simples, de baixo custo e implementação relativamente fácil.</p>
+        </article>
+        <article>
+          <span>MÉDIO PRAZO</span>
+          <h3>Melhorias planejadas</h3>
+          <p>Ações que exigem capacitação, planejamento ou aquisição de equipamentos.</p>
+        </article>
+        <article>
+          <span>LONGO PRAZO</span>
+          <h3>Transformações maiores</h3>
+          <p>Mudanças estruturais que dependem de investimentos maiores.</p>
+        </article>
+      </div>
+
+      <div class="info-panel">
+        <span class="eyebrow">INDICADORES AMBIENTAIS</span>
+        <h3>Como acompanhar os resultados?</h3>
+        <p>
+          Uma empresa precisa medir suas ações para saber se as mudanças
+          estão trazendo resultados. Alguns indicadores possíveis são:
+        </p>
+        <ul class="check-list">
+          <li>Consumo de água por período.</li>
+          <li>Consumo de energia por período.</li>
+          <li>Quantidade de resíduos gerados.</li>
+          <li>Quantidade de materiais reaproveitados.</li>
+          <li>Custos com matérias-primas.</li>
+          <li>Quantidade de embalagens reduzidas.</li>
+        </ul>
+      </div>
+
+      <div class="result-banner">
+        <span class="eyebrow">RESULTADO ESPERADO</span>
+        <h3>Um plano de sustentabilidade baseado em evidências.</h3>
+        <p>
+          Diagnóstico, metodologia, propostas de intervenção, matriz de decisão,
+          custos e benefícios, cronograma, indicadores, riscos e conclusão.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- APRENDA -->
+    <section class="page" id="aprenda">
+
+      <div class="page-heading">
+        <span class="eyebrow">CONHECIMENTO QUE GERA TRANSFORMAÇÃO</span>
+        <h2>Aprenda a cuidar do <span>planeta.</span></h2>
+        <p>
+          Entenda os principais desafios ambientais e descubra atitudes
+          que podem ser aplicadas em casa, na escola, na comunidade e nas empresas.
+        </p>
+      </div>
+
+      <div class="learning-intro">
+        <span class="eyebrow">EDUCAÇÃO AMBIENTAL</span>
+        <h3>O que é sustentabilidade?</h3>
+        <p>
+          Sustentabilidade é buscar formas de atender às necessidades atuais
+          utilizando os recursos de maneira responsável, sem comprometer
+          as possibilidades das próximas gerações.
+        </p>
+        <p>
+          Ela envolve três dimensões que precisam caminhar juntas:
+          a proteção ambiental, o desenvolvimento econômico e o bem-estar social.
+        </p>
+      </div>
+
+      <div class="section-heading left-heading">
+        <span class="eyebrow">ENTENDA O PROBLEMA</span>
+        <h2>Por que precisamos <span>mudar?</span></h2>
+      </div>
+
+      <div class="card-grid two-columns">
+        <article class="info-card">
+          <div class="card-icon">🗑</div>
+          <h3>Geração de resíduos</h3>
+          <p>
+            O descarte excessivo de materiais aumenta a necessidade de coleta,
+            tratamento e destinação adequada. Quando realizado incorretamente,
+            pode provocar poluição e desperdício de recursos.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <div class="card-icon">💧</div>
+          <h3>Desperdício de água</h3>
+          <p>
+            A água é essencial para a vida e para diversas atividades
+            econômicas. O desperdício e a poluição dificultam a conservação
+            desse recurso.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <div class="card-icon">⚡</div>
+          <h3>Consumo de energia</h3>
+          <p>
+            A produção e o consumo de energia podem gerar impactos ambientais.
+            Melhorar a eficiência e evitar desperdícios são atitudes importantes.
+          </p>
+        </article>
+
+        <article class="info-card">
+          <div class="card-icon">🌳</div>
+          <h3>Degradação ambiental</h3>
+          <p>
+            Poluição, desmatamento e uso inadequado dos recursos naturais
+            podem prejudicar ecossistemas, biodiversidade e qualidade de vida.
+          </p>
+        </article>
+      </div>
+
+      <div class="section-heading left-heading">
+        <span class="eyebrow">OS 5 RS DA SUSTENTABILIDADE</span>
+        <h2>Antes de descartar, <span>repense.</span></h2>
+        <p>
+          Os 5 Rs ajudam a orientar escolhas mais responsáveis e a prevenir
+          a geração desnecessária de resíduos.
+        </p>
+      </div>
+
+      <div class="five-rs">
+        <article><span>01</span><h3>Repensar</h3><p>Refletir sobre o que consumimos e os impactos das nossas escolhas.</p></article>
+        <article><span>02</span><h3>Reduzir</h3><p>Consumir apenas o necessário e evitar produtos que gerem desperdício.</p></article>
+        <article><span>03</span><h3>Reaproveitar</h3><p>Dar novos usos a objetos e materiais, prolongando sua vida útil.</p></article>
+        <article><span>04</span><h3>Reciclar</h3><p>Encaminhar corretamente materiais que podem retornar ao ciclo produtivo.</p></article>
+        <article><span>05</span><h3>Recusar</h3><p>Evitar produtos e práticas associados a impactos socioambientais desnecessários.</p></article>
+      </div>
+
+      <div class="section-heading left-heading">
+        <span class="eyebrow">COLETA SELETIVA</span>
+        <h2>Como separar os <span>materiais?</span></h2>
+        <p>
+          A separação correta facilita a triagem e o encaminhamento dos
+          materiais para reciclagem. As regras podem variar conforme o
+          serviço disponível em cada município.
+        </p>
+      </div>
+
+      <div class="recycling-grid">
+        <article class="recycling-card">
+          <div class="recycle-color paper"></div>
+          <h3>Papel</h3>
+          <p>Caixas de papelão, jornais, revistas e folhas limpas e secas.</p>
+        </article>
+        <article class="recycling-card">
+          <div class="recycle-color plastic"></div>
+          <h3>Plástico</h3>
+          <p>Garrafas PET e embalagens plásticas aceitas pela coleta local.</p>
+        </article>
+        <article class="recycling-card">
+          <div class="recycle-color glass"></div>
+          <h3>Vidro</h3>
+          <p>Garrafas e potes de vidro aceitos pelo serviço de coleta.</p>
+        </article>
+        <article class="recycling-card">
+          <div class="recycle-color metal"></div>
+          <h3>Metal</h3>
+          <p>Latas de bebidas e alimentos e outras embalagens metálicas recicláveis.</p>
+        </article>
+      </div>
+
+      <div class="info-panel">
+        <span class="eyebrow">PASSO A PASSO</span>
+        <h3>Como preparar os recicláveis?</h3>
+        <ol class="numbered-list">
+          <li>Separe os materiais conforme as orientações da coleta local.</li>
+          <li>Retire restos de alimentos e líquidos das embalagens.</li>
+          <li>Deixe os materiais limpos e secos quando necessário.</li>
+          <li>Evite misturar recicláveis com resíduos orgânicos.</li>
+          <li>Encaminhe para a coleta seletiva, cooperativas ou pontos de entrega.</li>
+        </ol>
+      </div>
+
+      <div class="warning-panel">
+        <strong>ATENÇÃO: NEM TODO MATERIAL É RECICLÁVEL NA COLETA COMUM</strong>
+        <p>
+          Papel higiênico usado, guardanapos sujos, materiais contaminados,
+          espelhos, lâmpadas, pilhas e eletrônicos exigem cuidados ou
+          destinações específicas. Consulte as orientações da sua cidade
+          e os pontos de recebimento adequados.
+        </p>
+      </div>
+
+      <div class="section-heading left-heading">
+        <span class="eyebrow">ECONOMIA CIRCULAR</span>
+        <h2>Do modelo linear ao <span>ciclo sustentável.</span></h2>
+      </div>
+
+      <div class="comparison-grid">
+        <article class="comparison-card">
+          <span class="eyebrow">MODELO LINEAR</span>
+          <h3>Extrair → Produzir → Descartar</h3>
+          <p>
+            O modelo tradicional utiliza recursos naturais para fabricar
+            produtos que, após o uso, muitas vezes são descartados.
+          </p>
+        </article>
+        <article class="comparison-card circular">
+          <span class="eyebrow">MODELO CIRCULAR</span>
+          <h3>Reduzir → Reutilizar → Recuperar</h3>
+          <p>
+            Busca manter produtos e materiais em uso por mais tempo,
+            diminuindo desperdícios e a necessidade de novos recursos.
+          </p>
+        </article>
+      </div>
+
+      <div class="section-heading left-heading">
+        <span class="eyebrow">OUTRAS SOLUÇÕES AMBIENTAIS</span>
+        <h2>Atitudes que fazem <span>diferença.</span></h2>
+      </div>
+
+      <div class="learning-list">
+        <article class="learning-item">
+          <div class="learning-icon">💧</div>
+          <div>
+            <h3>Economize água</h3>
+            <p>
+              Feche torneiras quando não estiver utilizando, informe sobre
+              vazamentos e evite desperdícios na limpeza e nas atividades diárias.
+            </p>
+          </div>
+        </article>
+
+        <article class="learning-item">
+          <div class="learning-icon">⚡</div>
+          <div>
+            <h3>Use energia com consciência</h3>
+            <p>
+              Apague luzes em ambientes vazios, aproveite a iluminação natural
+              e desligue equipamentos quando não estiverem em uso.
+            </p>
+          </div>
+        </article>
+
+        <article class="learning-item">
+          <div class="learning-icon">🍃</div>
+          <div>
+            <h3>Conheça a compostagem</h3>
+            <p>
+              A compostagem transforma resíduos orgânicos adequados, como
+              restos vegetais, em um composto que pode contribuir para
+              a melhoria do solo.
+            </p>
+          </div>
+        </article>
+
+        <article class="learning-item">
+          <div class="learning-icon">🛍</div>
+          <div>
+            <h3>Pratique o consumo consciente</h3>
+            <p>
+              Planeje compras, avalie a necessidade de cada produto,
+              prefira itens duráveis e evite desperdícios.
+            </p>
+          </div>
+        </article>
+
+        <article class="learning-item">
+          <div class="learning-icon">🔧</div>
+          <div>
+            <h3>Conserte e prolongue a vida útil</h3>
+            <p>
+              Quando possível, conserte objetos, doe itens em boas condições
+              e evite substituir produtos que ainda podem ser utilizados.
+            </p>
+          </div>
+        </article>
+
+        <article class="learning-item">
+          <div class="learning-icon">🌱</div>
+          <div>
+            <h3>Preserve áreas verdes</h3>
+            <p>
+              Respeite espaços naturais, não descarte resíduos em locais
+              inadequados e participe de ações de cuidado com a comunidade.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <div class="section-heading left-heading">
+        <span class="eyebrow">SUSTENTABILIDADE NAS EMPRESAS</span>
+        <h2>O que uma empresa <span>pode fazer?</span></h2>
+      </div>
+
+      <div class="card-grid two-columns">
+        <article class="info-card">
+          <h3>Gestão de resíduos</h3>
+          <p>Mapear os resíduos gerados, reduzir sua produção e organizar a destinação adequada.</p>
+        </article>
+        <article class="info-card">
+          <h3>Eficiência energética</h3>
+          <p>Monitorar o consumo e buscar equipamentos e processos mais eficientes.</p>
+        </article>
+        <article class="info-card">
+          <h3>Uso responsável da água</h3>
+          <p>Identificar perdas, acompanhar o consumo e melhorar os processos que utilizam água.</p>
+        </article>
+        <article class="info-card">
+          <h3>Logística reversa</h3>
+          <p>Participar de sistemas de retorno de produtos e embalagens após o uso, quando aplicável.</p>
+        </article>
+        <article class="info-card">
+          <h3>Capacitação de equipes</h3>
+          <p>Orientar funcionários e colaboradores sobre práticas sustentáveis.</p>
+        </article>
+        <article class="info-card">
+          <h3>Indicadores ambientais</h3>
+          <p>Medir resultados e acompanhar se as ações estão reduzindo os impactos.</p>
+        </article>
+      </div>
+
+      <div class="info-panel">
+        <span class="eyebrow">DESAFIO ECO FUTURE</span>
+        <h3>Monte seu plano de atitudes sustentáveis.</h3>
+        <p>Marque as atitudes que você pretende colocar em prática:</p>
+        <div class="action-checklist">
+          <label><input type="checkbox"> Separar corretamente os resíduos.</label>
+          <label><input type="checkbox"> Evitar desperdício de água.</label>
+          <label><input type="checkbox"> Economizar energia.</label>
+          <label><input type="checkbox"> Reutilizar materiais sempre que possível.</label>
+          <label><input type="checkbox"> Planejar melhor minhas compras.</label>
+          <label><input type="checkbox"> Compartilhar informações ambientais.</label>
+        </div>
+      </div>
+
+      <div class="sources-panel">
+        <span class="eyebrow">PARA CONTINUAR APRENDENDO</span>
+        <h3>Fontes de informação</h3>
+        <a href="https://www.gov.br/mma/pt-br/assuntos/educacao-ambiental/glossario-ea/politica-dos-5rs-1" target="_blank" rel="noopener">Ministério do Meio Ambiente — Política dos 5 Rs ↗</a>
+        <a href="https://www.gov.br/mma/pt-br/assuntos/educacao-ambiental/glossario-ea/o-que-e-reciclagem" target="_blank" rel="noopener">Ministério do Meio Ambiente — O que é reciclagem ↗</a>
+        <a href="https://www.gov.br/mdic/pt-br/assuntos/enec/economia-circular/modelo-economico/modelo-economico" target="_blank" rel="noopener">Ministério do Desenvolvimento — Economia circular ↗</a>
+        <a href="https://www.gov.br/mma/pt-br/assuntos/educacao-ambiental/glossario-ea/o-que-e-consumo-sustentavel/o-que-consumo-sustentavel" target="_blank" rel="noopener">Ministério do Meio Ambiente — Consumo sustentável ↗</a>
+      </div>
+
+      <div class="quote-panel">
+        <span class="eyebrow">LEMBRE-SE</span>
+        <h2>O meio ambiente não precisa de promessas. Precisa de <span>atitudes.</span></h2>
+        <p>Comece com pequenas mudanças e incentive outras pessoas a participar.</p>
+      </div>
+
+    </section>
+
+    <!-- QUIZ -->
+    <section class="page" id="quiz">
+
+      <div class="page-heading">
+        <span class="eyebrow">TESTE SEUS CONHECIMENTOS</span>
+        <h2>Desafio <span>ECO FUTURE.</span></h2>
+        <p>
+          Responda às sete perguntas e descubra quanto você aprendeu
+          sobre sustentabilidade, inovação e economia circular.
+        </p>
+      </div>
+
+      <div class="quiz-panel" id="quizPanel">
+        <div class="quiz-top">
+          <span id="questionCounter">PERGUNTA 1 DE 7</span>
+          <span id="scoreLabel">PONTOS: 0</span>
+        </div>
+
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <h3 id="questionText"></h3>
+        <div class="answers" id="answers"></div>
+
+        <p class="feedback" id="feedback" aria-live="polite"></p>
+
+        <button class="button button-primary" id="nextQuestion" disabled>
+          PRÓXIMA PERGUNTA →
+        </button>
+      </div>
+
+      <div class="result-panel hidden" id="resultPanel">
+        <span class="eyebrow">RESULTADO FINAL</span>
+        <h2 id="resultTitle"></h2>
+        <p id="resultText"></p>
+        <button class="button button-primary" id="restartQuiz">REFAZER QUIZ ↻</button>
+      </div>
+
+    </section>
+
   </main>
-  <footer><div class="container footer-inner"><div><div class="brand"><span class="brand-icon" aria-hidden="true">♻</span><span>FUTURO SUSTENTÁVEL</span></div><p class="footer-text" style="margin:12px 0 0">Feira de Ciências · Projeto 10 · Tema 3<br>Utilização de materiais sustentáveis e redução do desperdício.</p></div><a class="footer-link" href="#inicio">Voltar ao início ↑</a></div></footer>
-  <script>
-    const questions = [
-      { question: 'Qual atitude normalmente evita mais resíduos?', options: ['Comprar mais para aproveitar promoções', 'Usar apenas o necessário', 'Misturar todo o lixo'], correct: 1, explanation: 'Correto: evitar o desperdício na origem reduz a quantidade de resíduos gerados.' },
-      { question: 'O que fazer com uma caixa de papelão em bom estado?', options: ['Reaproveitar em outro projeto', 'Jogar na rua', 'Descartar sem avaliar o uso'], correct: 0, explanation: 'Isso! Reutilizar prolonga a vida útil do material.' },
-      { question: 'Um produto reciclável é sempre reciclado?', options: ['Sim, automaticamente', 'Não, depende da coleta e da estrutura disponível', 'Sim, se for jogado no lixo comum'], correct: 1, explanation: 'Exatamente: a reciclagem depende do destino correto e de sistemas capazes de processar o material.' }
-    ];
-    let current = 0, score = 0, answered = false;
-    const el = id => document.getElementById(id);
-    function renderQuestion() {
-      answered = false;
-      const q = questions[current];
-      el('quiz-progress').textContent = `PERGUNTA ${current+1} DE ${questions.length}`;
-      el('quiz-score').textContent = `${score} ${score === 1 ? 'ACERTO' : 'ACERTOS'}`;
-      el('quiz-fill').style.width = `${(current+1)/questions.length*100}%`;
-      el('quiz-question').textContent = q.question;
-      el('quiz-answers').replaceChildren();
-      el('quiz-feedback').textContent = '';
-      el('quiz-next').disabled = true;
-      el('quiz-next').textContent = current === questions.length-1 ? 'Ver resultado →' : 'Próxima pergunta →';
-      q.options.forEach((option,index) => {
-        const btn = document.createElement('button');
-        btn.className = 'answer';btn.type='button';btn.textContent=option;
-        btn.addEventListener('click', () => chooseAnswer(index));
-        el('quiz-answers').appendChild(btn);
-      });
-    }
-    function chooseAnswer(selected) {
-      if (answered) return;
-      answered = true;
-      const q = questions[current];
-      if (selected === q.correct) score++;
-      [...el('quiz-answers').children].forEach((button,index) => {
-        button.disabled = true;
-        if (index === q.correct) button.classList.add('correct');
-        else if (index === selected) button.classList.add('incorrect');
-      });
-      el('quiz-feedback').textContent = (selected === q.correct ? '✓ ' : '✗ ') + q.explanation;
-      el('quiz-score').textContent = `${score} ${score === 1 ? 'ACERTO' : 'ACERTOS'}`;
-      el('quiz-next').disabled = false;
-    }
-    function finishQuiz() {
-      el('quiz-progress').textContent = 'DESAFIO CONCLUÍDO';
-      el('quiz-fill').style.width = '100%';
-      const message = score === 3 ? 'Excelente! Você domina o assunto.' : score === 2 ? 'Muito bem! Você está no caminho certo.' : 'Cada escolha é uma chance de aprender.';
-      el('quiz-body').innerHTML = `<div class="quiz-result"><strong>${score}/3</strong><br>${message}</div><p style="color:#48655c;font-size:13px;line-height:1.7">Compartilhe o que aprendeu e coloque essas ideias em prática.</p><button type="button" class="quiz-next" id="restart-quiz">Tentar novamente ↻</button>`;
-      el('restart-quiz').addEventListener('click', () => {
-        current = 0; score = 0;
-        el('quiz-body').innerHTML = '<p class="quiz-question" id="quiz-question"></p><div class="answers" id="quiz-answers"></div><div class="quiz-feedback" id="quiz-feedback"></div><button type="button" class="quiz-next" id="quiz-next" disabled>Próxima pergunta →</button>';
-        bindNext();
-        renderQuestion();
-      });
-    }
-    function bindNext() {
-      el('quiz-next').addEventListener('click', () => {
-        if (!answered) return;
-        if (current < questions.length-1) { current++; renderQuestion(); }
-        else finishQuiz();
-      });
-    }
-    bindNext();
-    renderQuestion();
-  </script>
+
+  <footer class="footer">
+    <div class="footer-brand">
+      <span>ECO <strong>FUTURE</strong></span>
+      <p>Sustentabilidade • Inovação • Futuro</p>
+    </div>
+    <p>FEIRA ESCOLAR • 2026</p>
+    <button class="back-top" data-page="inicio">VOLTAR AO INÍCIO ↑</button>
+  </footer>
+
+</div>
+
 </body>
 </html>
